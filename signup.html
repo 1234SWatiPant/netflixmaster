@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body style="background-image: url('background.jpg');">
+
+    <nav>
+        <a href="#"><img src="logo.png" alt="logo"></a>
+    </nav>
+    <div class="form-wrapper">
+        <h2>Sign Up</h2>
+        <form action="signup.php" method="post" onsubmit="return validateForm()">
+           <div class="form-control">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Name</label>
+            </div>
+            <div class="form-control">
+                <input type="number" id="age" name="age" required>
+                <label for="age">Age</label>
+            </div>
+            <div class="form-control">
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <label for="phone">Phone Number</label>
+            </div>
+            <div class="form-control">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-control">
+                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-control">
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <label for="confirmPassword">Confirm Password</label>
+            </div>
+            <button><a href="C:/xampp/htdocs/netflix-master/example/movie.html" style="text-decoration: none; color: inherit;">Sign Up</a></button>
+        </form>
+        <div class="form-help"> 
+            <div class="already-have-account">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div><br>
+      <div class="form-help"> 
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <a href="#">Need help?</a>
+            </div>
+        <small>
+            This page is protected by Google reCAPTCHA to ensure you're not a bot. 
+            <a href="#">Learn more.</a>
+        </small>
+    </div>
+    <script>
+        function validateForm() {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+    <?php
+        if(isset($_GET['message'])) {
+            echo '<div class="form-help">'.$_GET['message'].'</div>';
+        }
+    ?>
+</body>
+</html>
